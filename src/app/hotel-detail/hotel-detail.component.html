@@ -1,0 +1,27 @@
+<p style="color: red;">Hotel-Detail works!</p>
+<img src="/assets/Images/{{h.imageName}}" alt="Hotel image" width="250px" height="250px">
+<h2 style="color: rgb(144, 226, 131); font-style: italic;">{{h.hotelName}} </h2>
+<table>
+    <tr>
+        
+        <td> 
+            
+            <p> {{h.about}} </p>
+            <hr/>
+            <span>Price per Day<span>{{h.price|currency:'INR'}}     </span>  
+                <i *ngIf="h.discount>0"> 
+                    with {{h.discount}}% Off 
+                    <span *ngIf="h.discount>5">
+                        <b style="color: blue; font-family: Georgia"><u> Recommended</u></b>
+                    </span>
+                </i> 
+        
+            </span> 
+            <br/>
+            Hotel Duration {{h.duration}} Days 
+           
+            
+        </td>
+        
+    </tr>
+</table>

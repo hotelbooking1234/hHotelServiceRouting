@@ -1,0 +1,68 @@
+
+<div >
+    <table>
+        <tr >
+            <td style=" border: solid 1.5px;background-color:rgb(138, 138, 244) ;">
+                Wishlist <br/>
+                {{wishlistCount}}  
+            </td>
+        </tr>
+        <tr>
+            
+            <td style=" border: solid 1.5px;background-color:rgb(234, 144, 221) ;">
+                Filter Hotel 
+                Location
+                
+                    <select #location (change)="getFilterData(location.value)">
+                        <option> Banglore </option>
+                        <option> New Delhi </option>
+                        <option> Hyderabad </option>
+                        <option> Chennai </option>
+                    </select>
+                   
+            
+            </td>
+            
+        </tr>
+    </table>
+   
+
+
+</div>
+
+
+
+<hr/>
+<div *ngFor="let h of allHotel">
+<table>
+    <tr>
+        <td> <img src="/assets/Images/{{h.imageName}}" alt="Hotel image" width="120px" height="150px"> </td>
+        <td> 
+            <h2>{{h.hotelName}} </h2>
+            <p> {{h.about|myabout}} </p>
+            <p> {{h.about}} </p>
+            <hr/>
+            <span>Price Per Day<span [style]="h.price<75?priceLowCss:priceNormalCSS" >{{h.price|currency:'INR'}}    </span>  
+                <i *ngIf="h.discount>0"> 
+                    with {{h.discount}}% Off 
+                    <span *ngIf="h.discount>5">
+                        <b style="color: blue; font-family: Georgia"><u> Recommended</u></b>
+                    </span>
+                </i> 
+
+        
+            </span>
+             
+            <br/>
+            Hotel Duration {{h.duration}} Days 
+            <hr/>
+            <button value="{{h.hotelId}}" (click)="goForBook(hotel.value)" #hotel> Book Now </button>
+            <button value="{{h.hotelId}}" (click)="addWishlist(hotel.value)" #hotel> Add to Wishlist </button>
+            <br/>
+            <button value="{{h.hotelId}}" (click)="viewHotelDetails(hotel.value)" #hotel> View Details </button> 
+            
+        </td>
+        
+    </tr>
+</table>
+</div>
